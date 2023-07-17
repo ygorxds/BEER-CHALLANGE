@@ -76,7 +76,7 @@ const BeerController = {
           selectedBeerStyle = sortedBeerStyles[0];
         }
       
-        // Aqui você pode implementar a lógica para recuperar a playlist com base no estilo de cerveja selecionado.
+       
       
         return res.json({ beerStyle: selectedBeerStyle });
       }
