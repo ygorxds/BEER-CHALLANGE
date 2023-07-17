@@ -2,6 +2,46 @@ const createKnex = require('../context')
 
 const knex = createKnex();
 
+const SpotifyWebApi = require('spotify-web-api-node');
+
+const spotifyApi = new SpotifyWebApi({
+  clientId: 'c44d34755baf43dca41627c6be062aba',
+  clientSecret: 'dbc6442c920e42b48b75098997c7848d',
+});
+
+async function getAccessToken() {
+    const data = await spotifyApi.clientCredentialsGrant();
+    const accessToken = data.body.access_token;
+    spotifyApi.setAccessToken(accessToken);
+  }
+
+  async function getBeerPlaylist(beerStyle) {
+    const searchQuery = `playlist:${beerStyle}`;
+    const { body } = await spotifyApi.search(searchQuery, ['playlist'], { limit: 1 });
+    
+    if (body.playlists.total === 0) {
+      throw new Error(`Playlist not found for beer style: ${beerStyle}`);
+    }
+    
+    const playlist = body.playlists.items[0];
+    const tracks = playlist.tracks.items.map((item) => {
+      const track = item.track;
+      return {
+        name: track.name,
+        artist: track.artists.map((artist) => artist.name).join(', '),
+        link: track.external_urls.spotify,
+      };
+    });
+    
+    return {
+      name: playlist.name,
+      tracks,
+    };
+  }
+
+  
+  
+
 const BeerController = {
     async findBeer(req, res) {
         let beers = await knex('Beers').select('*');
@@ -60,7 +100,7 @@ const BeerController = {
           if (temperatureDiff < closestTemperatureDiff) {
             closestTemperatureDiff = temperatureDiff;
             selectedBeerStyle = beer.name;
-            sortedBeerStyles = []; // Reset sortedBeerStyles array
+            sortedBeerStyles = [];
           } else if (temperatureDiff === closestTemperatureDiff) {
             sortedBeerStyles.push(beer.name);
           }
