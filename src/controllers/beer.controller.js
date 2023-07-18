@@ -2,6 +2,9 @@ const createKnex = require('../context');
 const knex = createKnex();
 const SpotifyWebApi = require('spotify-web-api-node');
 
+require('dotenv').config()
+
+
 const BeerController = {
   async findBeer(req, res) {
     let beers = await knex('Beers').select('*');
@@ -78,9 +81,10 @@ const BeerController = {
 
     // Integração com o Spotify para buscar a playlist
     const spotifyApi = new SpotifyWebApi({
-      clientId: 'c44d34755baf43dca41627c6be062aba',
-      clientSecret: 'dbc6442c920e42b48b75098997c7848d',
+      clientId: process.env.CLIENT_ID,
+      clientSecret: process.env.CLIENT_SECRET,
     });
+
 
     try {
       // Obter o token de acesso

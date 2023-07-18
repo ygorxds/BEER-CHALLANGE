@@ -13,7 +13,7 @@ const knex = require('knex');
 function createKnex() {
   return knex({
     client: 'mysql2',
-    connection: 'mysql://root:kCHJ7wpYRxyxkRO55w3u@containers-us-west-173.railway.app:6701/railway',
+    connection: process.env.DATABASE_URL,
     pool: {
       min: 2,
       max: 10,
