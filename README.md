@@ -85,3 +85,30 @@ Passo 11: Aguarde o processo de implantação ser concluído. Isso pode levar al
 Passo 12: Após a implantação bem-sucedida, você receberá um URL para acessar o backend implantado na GCP.
 
 O banco de dados Já está na Nuvem da Railway.
+
+
+PRINTS DO FUNCIONAMENTO:
+
+LISTANDO TODAS AS CERVEJAS
+![image](https://github.com/ygorxds/BEER-CHALLANGE/assets/80071063/b85dbcad-dc39-4cbf-b117-b5bdda3c76da)
+
+CRIANDO CERVEJA: 
+![image](https://github.com/ygorxds/BEER-CHALLANGE/assets/80071063/0657eb7c-a684-44c1-84d7-2d91fdcaf322)
+
+ATUALIZANDO CERVEJA:
+![image](https://github.com/ygorxds/BEER-CHALLANGE/assets/80071063/e9e0ef08-0222-45fb-853a-054d571e13e1)
+
+DELETANDO CERVEJA:
+![image](https://github.com/ygorxds/BEER-CHALLANGE/assets/80071063/4d61dc06-a351-4971-98ce-2570e5fd31c6)
+
+ENVIANDO TEMPERATURA E RECEBENDO A CERVEJA E A PLAYLIST:
+![image](https://github.com/ygorxds/BEER-CHALLANGE/assets/80071063/410baa93-5f86-4842-99ab-d86d97186fe2)
+
+
+
+
+
+
+
+
+
